@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<pens>
+	<pen srNo="1">
+		<name>Bic</name>
+		<desc>"Penna nera"</desc>
+	</pen>
+	<pen srNo="2">
+		<name>Multi</name>
+		<desc>"Multicolore"</desc>
+	</pen>
+</pens>
