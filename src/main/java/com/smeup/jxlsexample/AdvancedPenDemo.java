@@ -14,20 +14,18 @@ import org.jxls.util.JxlsHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class PenDemoMore {
+public class AdvancedPenDemo {
 
-	static Logger logger = LoggerFactory.getLogger(PenDemoMore.class);
+	static Logger logger = LoggerFactory.getLogger(AdvancedPenDemo.class);
 
 	public static void main(String[] args) throws IOException, ParseException {
 
 		logger.info("Running Object Collection demo");
 		List<PenAdv> pens = generateSamplePenData();
-		// se uso un workaround a getResourceAsStream non mi dà "Cannot load XLS
-		// Transformer"
 		
 		String tempPath = "src/main/resources/excel/penadv_template.xlsx";
 		FileInputStream is = new FileInputStream(new File(tempPath));
-		try (OutputStream os = new FileOutputStream("src/main/resources/excel/pen_output.xlsx")) {
+		try (OutputStream os = new FileOutputStream("src/main/resources/excel/penadv_output.xlsx")) {
 			Context context = new Context();
 			context.putVar("pens", pens);
 			JxlsHelper.getInstance().processTemplate(is, os, context);
