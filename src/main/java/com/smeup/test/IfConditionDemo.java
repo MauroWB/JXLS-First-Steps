@@ -15,7 +15,6 @@ import org.jxls.transform.Transformer;
 import org.jxls.util.JxlsHelper;
 import org.jxls.util.TransformerFactory;
 
-import com.smeup.jxlsexample.SimpleAreaListener;
 import com.smeup.jxlsexample.Student;
 
 public class IfConditionDemo {
