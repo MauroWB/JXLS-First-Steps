@@ -20,11 +20,11 @@ public class PenDemo {
     public static void main(String[] args) throws ParseException, IOException, Exception {
     	logger.info("Running Object Collection demo");
         List<Pen> pens = generateSamplePenData();
-        //se uso un workaround a getResourceAsStream non mi d‡ "Cannot load XLS Transformer"
+        //se uso un workaround a getResourceAsStream non mi d√† "Cannot load XLS Transformer"
         //try(InputStream is = ObjectCollectionDemo.class.getResourceAsStream("object_collection_template.xls")) {
-        String tempPath = "src/sample/pen_template.xlsx";
+        String tempPath = "src/main/resources/excel/simplepen_template.xlsx";
         FileInputStream is = new FileInputStream(new File(tempPath));
-            try (OutputStream os = new FileOutputStream("src/sample/pen_output.xlsx")) {
+            try (OutputStream os = new FileOutputStream("src/main/resources/excel/simplepen_output.xlsx")) {
                 Context context = new Context();
                 context.putVar("pens", pens);
                 JxlsHelper.getInstance().processTemplate(is, os, context);
