@@ -23,25 +23,18 @@ public class ExcelTemplateFromXML {
 	public static void main(String[] args) throws FileNotFoundException {
 		List<Pen> pens=generateSamplePenData();
 		//input 1: XML
-		FileInputStream is = new FileInputStream(new File("src/sample/penxml_template.xlsx"));
+		FileInputStream is = new FileInputStream(new File("src/main/resources/excel/penxml_template.xlsx"));
 		
-		try (OutputStream os = new FileOutputStream("src/sample/pen_output.xlsx")) {
+		try (OutputStream os = new FileOutputStream("src/main/resources/excel/penxml_output.xlsx")) {
 			Transformer transformer = TransformerFactory.createTransformer(is, os);
-			FileInputStream x = new FileInputStream(new File("src/sample/pen.xml"));
+			FileInputStream x = new FileInputStream(new File("src/main/resources/xml/pen.xml"));
 			AreaBuilder areaBuilder = new XmlAreaBuilder(x, transformer);
 			List<Area> xlsAreaList = areaBuilder.build();
 			Area xlsArea = xlsAreaList.get(0);
-			
-			//tentativo di leggere funzioni Excel
-			//JexlExpressionEvaluator evaluator = (JexlExpressionEvaluator) transformer.getTransformationConfig().getExpressionEvaluator();
-			//Map<String, Object> functionMap = new HashMap<>();
-			//functionMap.put("demo", new JexlCustomFunctionDemo());
 			Context context = new Context();
 			context.putVar("pens", pens);
 			xlsArea.applyAt(new CellRef("Result!A1"), context);
 			transformer.write();
-			
-			
 		} catch (IOException e) {
 			e.getMessage();
 			e.printStackTrace();
