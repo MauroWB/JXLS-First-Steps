@@ -2,9 +2,9 @@ package com.smeup.jxlsexample;
 
 public class PenAdv {
 	
-	private String name;
-	private float cost;
-	private String desc;
+	public String name;
+	public float cost;
+	public String desc;
 	
 	public String getName() {
 		return name;
