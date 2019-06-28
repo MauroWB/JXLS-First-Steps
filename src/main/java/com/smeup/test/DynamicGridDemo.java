@@ -29,6 +29,8 @@ public class DynamicGridDemo {
 		context.putVar("data", pens);
 		//JxlsHelper.getInstance().processTemplate(in, out, context);
 		JxlsHelper.getInstance().processGridTemplateAtCell(in, out, context, "name,cost,desc", "Sheet1!A1");
+		in.close();
+		out.close();
 		System.out.println("Fine elaborazione.");
 	}
 

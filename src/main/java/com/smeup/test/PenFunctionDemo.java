@@ -43,32 +43,34 @@ public class PenFunctionDemo {
 		// Map<String, Object> functionMap = new HashMap<>();
 		// functionMap.put("demo", new JexlCustomFunctionDemo());
 
-		try (OutputStream os = new FileOutputStream("src/sample/pen_output.xlsx")) {
-			Transformer transformer = TransformerFactory.createTransformer(is, os);
-			AreaBuilder areaBuilder = new XlsCommentAreaBuilder(transformer);
-			List<Area> xlsAreaList = areaBuilder.build();
-			Area xlsArea = xlsAreaList.get(0);
-			Context context = new Context();
-			context.putVar("x", 18);
-			context.putVar("y", 17);
-			JexlExpressionEvaluator evaluator = (JexlExpressionEvaluator) transformer.getTransformationConfig().getExpressionEvaluator();
-			Map<String, Object> functionMap = new HashMap<>();
-			functionMap.put("demo", new PenFunctionDemo());
-            JexlEngine customJexlEngine = new JexlBuilder().namespaces(functionMap).create();
-            evaluator.setJexlEngine(customJexlEngine);
-            xlsArea.applyAt(new CellRef("Sheet1!A1"), context);
-            transformer.write();
-		}
+		OutputStream os = new FileOutputStream("src/sample/pen_output.xlsx");
+		Transformer transformer = TransformerFactory.createTransformer(is, os);
+		AreaBuilder areaBuilder = new XlsCommentAreaBuilder(transformer);
+		List<Area> xlsAreaList = areaBuilder.build();
+		Area xlsArea = xlsAreaList.get(0);
+		Context context = new Context();
+		context.putVar("x", 18);
+		context.putVar("y", 17);
+		JexlExpressionEvaluator evaluator = (JexlExpressionEvaluator) transformer.getTransformationConfig()
+				.getExpressionEvaluator();
+		Map<String, Object> functionMap = new HashMap<>();
+		functionMap.put("demo", new PenFunctionDemo());
+		JexlEngine customJexlEngine = new JexlBuilder().namespaces(functionMap).create();
+		evaluator.setJexlEngine(customJexlEngine);
+		xlsArea.applyAt(new CellRef("Sheet1!A1"), context);
+		transformer.write();
+		is.close();
+		os.close();
 	}
 
 	public String check(Integer z) {
-		if (z>=18) {
+		if (z >= 18) {
 			return "Maggiore";
 		}
 		return "Minore";
 	}
-	
+
 	public Integer sum(Integer x, Integer y) {
-		return x+y;
+		return x + y;
 	}
 }

@@ -1,12 +1,5 @@
 package com.smeup.test;
 
-import org.jxls.common.Context;
-import org.jxls.util.JxlsHelper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.smeup.jxlsexample.PenDemo;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -15,6 +8,13 @@ import java.io.OutputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.jxls.common.Context;
+import org.jxls.util.JxlsHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.smeup.jxlsexample.PenDemo;
 
 /*
  * Stampa un array di stringhe
@@ -32,12 +32,12 @@ public class StringToExcel {
 
 		String tempPath = "src/main/resources/excel/strings_template.xlsx";
 		FileInputStream is = new FileInputStream(new File(tempPath));
-		try (OutputStream os = new FileOutputStream("src/main/resources/excel/strings_output.xlsx")) {
-			Context context = new Context();
-			context.putVar("strings", strings);
-			JxlsHelper.getInstance().processTemplate(is, os, context);
-		}
+		OutputStream os = new FileOutputStream("src/main/resources/excel/strings_output.xlsx");
+		Context context = new Context();
+		context.putVar("strings", strings);
+		JxlsHelper.getInstance().processTemplate(is, os, context);
+		is.close();
+		os.close();
 	}
-	
-	
+
 }

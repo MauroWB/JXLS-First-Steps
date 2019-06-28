@@ -25,6 +25,8 @@ public class SimpleArray {
 		context.putVar("strings", st);
 		context.putVar("int", it);
 		JxlsHelper.getInstance().processTemplate(in, out, context);
+		in.close();
+		out.close();
 		System.out.println("Fine.");
 	}
 

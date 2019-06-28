@@ -35,6 +35,8 @@ public class Formulas {
 		context.putVar("nums", Arrays.asList(nums));
 		context.putVar("master", master);
 		JxlsHelper.getInstance().processTemplate(in, out, context);
+		in.close();
+		out.close();
 	}
 
 }

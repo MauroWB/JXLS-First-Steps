@@ -22,14 +22,15 @@ public class AdvancedPenDemo {
 
 		logger.info("Running Object Collection demo");
 		List<PenAdv> pens = generateSamplePenData();
-		
+
 		String tempPath = "src/main/resources/excel/penadv_template.xlsx";
 		FileInputStream is = new FileInputStream(new File(tempPath));
-		try (OutputStream os = new FileOutputStream("src/main/resources/excel/penadv_output.xlsx")) {
-			Context context = new Context();
-			context.putVar("pens", pens);
-			JxlsHelper.getInstance().processTemplate(is, os, context);
-		}
+		OutputStream os = new FileOutputStream("src/main/resources/excel/penadv_output.xlsx");
+		Context context = new Context();
+		context.putVar("pens", pens);
+		JxlsHelper.getInstance().processTemplate(is, os, context);
+		is.close();
+		os.close();
 
 	}
 
