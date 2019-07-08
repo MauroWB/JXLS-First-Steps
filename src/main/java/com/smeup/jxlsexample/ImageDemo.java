@@ -1,9 +1,10 @@
-package com.smeup.test;
+package com.smeup.jxlsexample;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
 
 import org.jxls.common.Context;
 import org.jxls.util.JxlsHelper;
@@ -20,8 +21,14 @@ public class ImageDemo {
 		byte[] imageBytes = Util.toByteArray(imgInputStream);
 		Context context = new Context();
 		context.putVar("image", imageBytes);
+		context.putVar("url", "https://linvitatospeciale.it/wp-content/uploads/2019/05/smeup.png");
 		
+		// Da URL 
+		InputStream input = new URL("https://linvitatospeciale.it/wp-content/uploads/2019/05/smeup.png").openStream();
+		byte[] urlBytes = Util.toByteArray(input);
+		context.putVar("imageFromUrl", urlBytes);
 		
+		input.close();
 		JxlsHelper.getInstance().processTemplate(in, out, context);
 		in.close();
 		imgInputStream.close();
