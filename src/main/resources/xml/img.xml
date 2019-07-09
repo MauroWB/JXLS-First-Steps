@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?>
+<UiSmeup Testo="WETEST_EXB WEB : Prototipi EXB - "> <Service DSep="," Funzione="F(EXB;B£SER_46;WRK.SCP) 1(MB;SCP_SET;WETEST_EXB) 2(;;J1_URL) INPUT()" IdFun="0708115352458" NumSes="809752" Servizio="B£SER_46" TSep="." Titolo1="" Titolo2="WEB : Prototipi EXB"/>
+  <Griglia>
+    <Colonna Cod="CLI01" IO="B" Lun="15" Ogg="**" Txt="Descrizione"/>
+    <Colonna Cod="FLD02" IO="B" Lun="10" Ogg="J4IMG" Txt="Immagine"/>
+  </Griglia>
+  <Righe>
+    <Riga Fld="Immagine google|J1;URL;https://www.google.it/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"/>
+    <Riga Fld="Immagine amazon|J1;URL;http://g-ecx.images-amazon.com/images/G/29/gno/images/general/navAmazonLogoFooter._V185350640_.gif"/>
+  </Righe>
+  <Setup>
+    <Program Context="B£SER_46\WRK.SCP\WETEST_EXBJ1_URL"/>
+  </Setup>
+  <UIPopup/> <Setup>
+    <Program Context="B£SER_46\WRK.SCP\WETEST_EXBJ1_URL">
+      <EXB>
+        <UserSetups Exist="No"/>
+      </EXB>
+      <UserSetups Disabled="Yes"/>
+    </Program>
+  </Setup>
+</UiSmeup>
