@@ -15,6 +15,9 @@ import org.jxls.common.Context;
 import org.jxls.transform.Transformer;
 import org.jxls.util.TransformerFactory;
 
+import com.smeup.commands.ColorDemoCommand;
+import com.smeup.commands.TestCustomCommand;
+
 
 public class UseCustomCommand {
 
@@ -24,7 +27,8 @@ public class UseCustomCommand {
 		
 		Transformer transformer = TransformerFactory.createTransformer(in, out);
 		AreaBuilder areaBuilder = new XlsCommentAreaBuilder(transformer);
-		XlsCommentAreaBuilder.addCommandMapping("smeupTest", TestCustomCommand.class);
+		XlsCommentAreaBuilder.addCommandMapping("smeuptest", TestCustomCommand.class);
+		XlsCommentAreaBuilder.addCommandMapping("color", ColorDemoCommand.class);
 		List<Area> xlsAreaList = areaBuilder.build();
 		Area xlsArea = xlsAreaList.get(0);
 		Context context = new Context();
